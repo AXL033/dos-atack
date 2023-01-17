@@ -8,6 +8,7 @@ pkg install git
 pkg install python3
 git clone https://github.com/AXL033/dos-atack.git
 cd dos-atack
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 python3 dos.py
 ```
